@@ -11,6 +11,7 @@ const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [message, setMessage] = useState('');
 
 
 	useEffect(() => {
@@ -22,6 +23,7 @@ const App = () => {
 			}
 			if (type === 'VKWebAppGetClientVersionResult') {
 				console.log(data)
+				console.log(message)
 				console.log(fetchedUser)
 			}
 		});
@@ -45,7 +47,7 @@ const App = () => {
 
 	return (
 		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} getClientVersion={getClientVersion} />
+			<Home id='home' fetchedUser={fetchedUser} getClientVersion={getClientVersion} setMessage={setMessage} message={message}/>
 			<Persik id='persik' go={go} />
 		</View>
 	);

@@ -5,13 +5,18 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
+import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 
-const Home = ({ id, fetchedUser, getClientVersion }) => (
+const Home = ({ id, fetchedUser, getClientVersion, message , setMessage}) => (
 	<Panel id={id}>
 		<PanelHeader>Example</PanelHeader>
 		<Group title="Navigation Example">
 			<Div>
 				Имя пользователя {fetchedUser && fetchedUser.first_name}
+
+				<Textarea className='margin-bottom' value={message} onChange={(e) => {
+					setMessage(e.currentTarget.value)
+				}} placeholder='Введите текст новости' />
 
 				<Button size="xl" level="2" onClick={getClientVersion} >
 					Запросить версию приложения и посмотреть сообщение
